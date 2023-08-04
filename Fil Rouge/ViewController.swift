@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         passStackV.layer.cornerRadius = 20
         wrongEmail.isHidden = true
         wrongPass.isHidden = true
+        
         connectBtn.layer.cornerRadius = 25
         
         // Active l'action de la méthode textFieldDidChange quand je tape
@@ -130,7 +131,7 @@ class ViewController: UIViewController {
     //Afficher dans message.text ce qu'on tape
     @objc func textFieldDidChange(_ textField: UITextField) {
         // Mettre à jour le contenu de message.text avec le texte tapé dans les champs de saisie
-        messageText.text = "Tap tap tap tap tap tap..."//"\(emailText.text ?? "")\n\(passText.text ?? "")"
+        messageText.text = "Tap tap tap tap tap tap..."
         // Vérifier si le texte du champ de saisie correspond au regex
         if textField == emailText {
             let isValidEmail = isValidEmail(email: textField.text ?? "")
@@ -157,9 +158,11 @@ class ViewController: UIViewController {
             messageText.text = "Waaaaaaa ! C'est tout vert !"
             // Si les deux conditions sont respectées, change le background du bouton en vert
             connectBtn.backgroundColor = UIColor.systemGreen
-        } else {
-            // Si au moins une des conditions n'est pas respectée, réinitialiser le message
-            messageText.text = ""
+        }else{
+            connectBtn.backgroundColor = UIColor.darkGray
+        }
+        if emailText.text?.isEmpty == true && passText.text?.isEmpty == true{
+            messageText.text = " "
         }
     }
 }
