@@ -16,10 +16,12 @@ class ViewController: UIViewController {
     @IBOutlet var container: UIView!
     @IBOutlet var connectBtn: UIButton!
     @IBOutlet var messageText: UILabel!
-    @IBOutlet weak var emailStackV: UIStackView!
-    @IBOutlet weak var wrongEmail: UIImageView!
-    @IBOutlet weak var wrongPass: UIImageView!
-    @IBOutlet weak var passStackV: UIStackView!
+    @IBOutlet var emailStackV: UIStackView!
+    @IBOutlet var wrongEmail: UIImageView!
+    @IBOutlet var wrongPass: UIImageView!
+    @IBOutlet var passStackV: UIStackView!
+    @IBOutlet var iconEmail: UIImageView!
+    @IBOutlet var iconPass: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,7 @@ class ViewController: UIViewController {
         passStackV.layer.cornerRadius = 20
         wrongEmail.isHidden = true
         wrongPass.isHidden = true
-        
+        passText.isSecureTextEntry = true
         connectBtn.layer.cornerRadius = 25
         
         // Active l'action de la méthode textFieldDidChange quand je tape
