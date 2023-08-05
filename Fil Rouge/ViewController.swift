@@ -20,8 +20,6 @@ class ViewController: UIViewController {
     @IBOutlet var wrongEmail: UIImageView!
     @IBOutlet var wrongPass: UIImageView!
     @IBOutlet var passStackV: UIStackView!
-    @IBOutlet var iconEmail: UIImageView!
-    @IBOutlet var iconPass: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +30,13 @@ class ViewController: UIViewController {
         //Fin gestion du clavier
         container.layer.cornerRadius = 30
         container.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        bubbleView.layer.cornerRadius = 15
-        emailStackV.layer.cornerRadius = 20
-        passStackV.layer.cornerRadius = 20
-        wrongEmail.isHidden = true
-        wrongPass.isHidden = true
-        passText.isSecureTextEntry = true
+        
+        bubbleView.layer.cornerRadius = 15 // Bords info bulle arrondis
+        emailStackV.layer.cornerRadius = 20 // Bords du champs arrondis
+        passStackV.layer.cornerRadius = 20 // Bords du champs arrondis
+        wrongEmail.isHidden = true // Icone check masqué
+        wrongPass.isHidden = true // Icone check masqué
+        passText.isSecureTextEntry = true // Mot de passe masqué par des points
         connectBtn.layer.cornerRadius = 25
         
         // Active l'action de la méthode textFieldDidChange quand je tape
@@ -79,24 +78,7 @@ class ViewController: UIViewController {
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordPredicate.evaluate(with: password)
     }
-    
-    //Gestion du clavier
-    // Cette méthode est appelée lorsque le champ de saisie devient le premier répondant
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Affiche le clavier
-        textField.becomeFirstResponder()
-    }
-    // Cette méthode est appelée lorsque le champ de saisie va cesser d'être le premier répondant
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        // Masque le clavier
-        textField.resignFirstResponder()
-    }
-    // Cette méthode est appelée lorsque l'utilisateur appuie sur le bouton "retour" du clavier
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Masque le clavier lorsque l'utilisateur appuie sur "retour"
-        textField.resignFirstResponder()
-        return true
-    }
+   
     // Cette méthode est appelée lorsque l'utilisateur appuie en dehors du champ de saisie
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Masque le clavier lorsque l'utilisateur appuie en dehors du champ de saisie

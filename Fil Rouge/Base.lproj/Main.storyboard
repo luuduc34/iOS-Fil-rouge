@@ -167,8 +167,6 @@
                         <outlet property="container" destination="xa1-oO-c9Q" id="VyO-gG-U6k"/>
                         <outlet property="emailStackV" destination="yzs-BI-7ut" id="32v-nJ-7Tc"/>
                         <outlet property="emailText" destination="p3x-D5-RXQ" id="sqY-a4-Wr6"/>
-                        <outlet property="iconEmail" destination="3Ml-TJ-EWF" id="qQu-ob-HPr"/>
-                        <outlet property="iconPass" destination="QM1-BG-0C3" id="Xai-Dq-pQM"/>
                         <outlet property="messageText" destination="F2z-aa-Hhi" id="qio-Pr-BNY"/>
                         <outlet property="passStackV" destination="EBs-5B-tG4" id="s59-5r-Ssk"/>
                         <outlet property="passText" destination="pv7-3M-hnO" id="GX0-4B-bEh"/>
