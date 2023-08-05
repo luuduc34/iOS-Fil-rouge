@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var wrongEmail: UIImageView!
     @IBOutlet weak var wrongPass: UIImageView!
     @IBOutlet weak var passStackV: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Login"
@@ -27,12 +28,8 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         //Fin gestion du clavier
-        container.layer.cornerRadius = 20
+        container.layer.cornerRadius = 30
         container.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        emailText.layer.cornerRadius = 25
-        passText.layer.cornerRadius = 25
-        emailText.clipsToBounds = true
-        passText.clipsToBounds = true
         bubbleView.layer.cornerRadius = 15
         emailStackV.layer.cornerRadius = 20
         passStackV.layer.cornerRadius = 20
@@ -67,6 +64,7 @@ class ViewController: UIViewController {
         homeViewController?.modalPresentationStyle = .fullScreen
         present(homeViewController!, animated: true)
     }
+    
     // Regex email
     func isValidEmail(email: String) -> Bool {
         let emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
@@ -114,6 +112,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    
     //Faire revenir la vue à la contrainte 0 quand le clavier est masqué
     @objc func keyboardWillHide(_ notification: Notification) {
         // Rétablir la position originale de la vue
@@ -123,10 +122,12 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
     //retirer les notifications lorsque la vue de contrôleur de vue est supprimée (pour éviter les fuites de mémoire)
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
     //Fin gestion du clavier
     //Afficher dans message.text ce qu'on tape
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -136,7 +137,7 @@ class ViewController: UIViewController {
         if textField == emailText {
             let isValidEmail = isValidEmail(email: textField.text ?? "")
             // Si c'est pas valide, le texte est rouge sinon vert
-            textField.textColor = isValidEmail ? UIColor.systemGreen : UIColor.systemRed
+            textField.textColor = isValidEmail ? UIColor.systemMint : UIColor.systemRed
             // Si le champ est vide, l'image du check disparait
             wrongEmail.isHidden = textField.text?.isEmpty == true
             // Il y a un check vert si c'est valide sinon une croix rouge
@@ -144,7 +145,7 @@ class ViewController: UIViewController {
         } else if textField == passText {
             let isValidPassword = isValidPassword(password: textField.text ?? "")
             // Si c'est pas valide, le texte est rouge sinon vert
-            textField.textColor = isValidPassword ? UIColor.systemGreen : UIColor.systemRed
+            textField.textColor = isValidPassword ? UIColor.systemMint : UIColor.systemRed
             // Si le champ est vide, l'image du check disparait
             wrongPass.isHidden = textField.text?.isEmpty == true
             // Il y a un check vert si c'est valide sinon une croix rouge
@@ -156,14 +157,40 @@ class ViewController: UIViewController {
         if isValidEmail && isValidPassword {
             // Si les deux conditions sont respectées, envoyer un message spécifique à messageText
             messageText.text = "Waaaaaaa ! C'est tout vert !"
-            // Si les deux conditions sont respectées, change le background du bouton en vert
-            connectBtn.backgroundColor = UIColor.systemGreen
-        }else{
-            connectBtn.backgroundColor = UIColor.darkGray
+            // Mettre le dégradé de vert pour le fond du bouton
+            connectBtn.backgroundColor = UIColor.greenGradient() // Remplacez UIColor.greenGradient() par la fonction qui génère le dégradé de vert
+        } else {
+            // Si les conditions ne sont pas respectées, mettre en gris le fond du bouton
+            connectBtn.backgroundColor = UIColor.lightGray
+            
         }
         if emailText.text?.isEmpty == true && passText.text?.isEmpty == true{
             messageText.text = " "
         }
+        
     }
 }
+// Gestion du dégradé
+extension UIColor {
+    static func greenGradient() -> UIColor {
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.systemGreen.withAlphaComponent(0.3).cgColor, UIColor.systemMint.cgColor]
+        gradientLayer.locations = [0, 1]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0)
+        
+        let size = CGSize(width: 170, height: 50) // Prend la taille du bouton
+        gradientLayer.frame = CGRect(origin: .zero, size: size)
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return UIColor(patternImage: image!)
+    }
+}
+
+
 
