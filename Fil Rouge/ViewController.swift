@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         //Fin gestion du clavier
         container.layer.cornerRadius = 30
         container.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
+        container.alpha = 0.95
         bubbleView.layer.cornerRadius = 15 // Bords info bulle arrondis
         emailStackV.layer.cornerRadius = 20 // Bords du champs arrondis
         passStackV.layer.cornerRadius = 20 // Bords du champs arrondis

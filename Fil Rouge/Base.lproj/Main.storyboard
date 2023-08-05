@@ -43,14 +43,14 @@
                                             <action selector="login" destination="BYZ-38-t0r" eventType="touchUpInside" id="ggE-1V-XPw"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yzs-BI-7ut">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yzs-BI-7ut">
                                         <rect key="frame" x="30" y="30" width="333" height="50"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ico_profil_blue" translatesAutoresizingMaskIntoConstraints="NO" id="3Ml-TJ-EWF">
                                                 <rect key="frame" x="0.0" y="15" width="30" height="20"/>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ton email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p3x-D5-RXQ">
-                                                <rect key="frame" x="38" y="0.0" width="257" height="50"/>
+                                                <rect key="frame" x="32" y="0.0" width="269" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                             </textField>
@@ -67,14 +67,14 @@
                                             <constraint firstItem="p3x-D5-RXQ" firstAttribute="top" secondItem="yzs-BI-7ut" secondAttribute="top" id="xVt-ls-gyc"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EBs-5B-tG4">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="EBs-5B-tG4">
                                         <rect key="frame" x="30" y="90" width="333" height="50"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ico_password_blue" translatesAutoresizingMaskIntoConstraints="NO" id="QM1-BG-0C3">
                                                 <rect key="frame" x="0.0" y="15" width="30" height="20"/>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ton mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pv7-3M-hnO">
-                                                <rect key="frame" x="38" y="0.0" width="257" height="50"/>
+                                                <rect key="frame" x="32" y="0.0" width="269" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="password"/>
                                             </textField>
